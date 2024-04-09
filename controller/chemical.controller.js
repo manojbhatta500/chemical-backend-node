@@ -104,7 +104,7 @@ async function handleChemicalPostRequest(req, res) {
 
  
     return res.status(200).json({
-        msg: "successfully handled post method"
+        msg: "successfully Posted pdf and data"
     });
 }
 

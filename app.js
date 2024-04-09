@@ -13,7 +13,9 @@ mongoose.connect('mongodb://127.0.0.1:27017/chemicals').then(()=>{
 app.use(express.json(),express.urlencoded());
 
 
-
+app.use('/lazy',(req,res)=>{
+    res.send('thok thok thok');
+})
 
 app.use('/chemical',chemicalRoute);
 
