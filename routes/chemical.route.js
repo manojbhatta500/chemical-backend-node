@@ -21,7 +21,7 @@ const router = express.Router();
 
 
 
-router.post('/cname',handleCnamePostMethod);
+router.get('/cname',handleCnamePostMethod);
 
 router.post('/sname',handleSnamePostMethod);
 

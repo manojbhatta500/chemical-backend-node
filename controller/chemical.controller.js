@@ -2,36 +2,18 @@ const chemical = require('../model/chemical.model');
 const Chemical = require('../model/chemical.model'); 
 const { containsKeyword } = require('./chemical.savelogic');
 
+var similarList = [];
+
 async function handleCnamePostMethod(req, res) {
-    const { commonname } = req.body;
-
-    console.log(commonname);
-
-
-    const chemical = await Chemical.findOne({
-        commonName: { $regex: `\\b${commonname}\\b`, $options: 'i' }
-    });
-
-    console.log(`Regular Expression: \\b${commonname}\\b`);
-
-    
-
-    if (!chemical) {
-        return res.status(404).json({
-            msg: "Chemical not found"
-        });
-    }
-
+  
+    const chemicals = await Chemical.find();
+   
     return res.status(200).json({
-        msg: "Successfully retrieved chemical",
-        chemical:{
-            id: chemical._id,
-            scientificName : chemical.scientificName,
-            commanName : chemical.commonName,
-            pdfPath : chemical.pdfPath
-        }
+        msg: "Successfully retrieved similar chemicals",
+        Chemicals: chemicals
     });
 }
+
 
 
 async function handleSnamePostMethod(req,res){
